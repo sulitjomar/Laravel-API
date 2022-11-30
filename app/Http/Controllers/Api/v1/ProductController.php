@@ -19,7 +19,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-
         $validator = Validator::make($request->all(), [
 
             'name_search' => 'string',
@@ -53,7 +52,6 @@ class ProductController extends Controller
                         ->paginate($validated_data['items_per_page']);
 
         return ProductResource::collection($products);
-
     }
 
     /**
@@ -248,10 +246,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-
-    public function create() {
-        return view('create');
+        DB::table('products')->where('id', $id)->delete();
+        return 'Data deleted';
     }
 }
