@@ -24,10 +24,10 @@ Route::prefix('v1')->group(function() {
     Route::prefix('product')->group(function() {
 
         Route::post('/store', [ProductController::class, 'store']);
-        Route::get('/', [ProductController::class, 'index']);
+        Route::get('/show', [ProductController::class, 'index']);
         Route::get('/show/{id}', [ProductController::class, 'show']);
         Route::put('/update/{id}', [ProductController::class, 'update']);
-
+        Route::delete('/delete/{id}', [ProductController::class, 'destroy']);
     });
 
 });
